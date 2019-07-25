@@ -1,6 +1,6 @@
 {
   "private": true,
-  "name": "demo",
+  "name": "elements",
   "version": "0.1.0",
   "license": "MIT",
   "scripts": {
@@ -13,7 +13,7 @@
   },
   "dependencies": {
     "gatsby": "^2.13.1",
-    "gatsby-theme-jam-example": "*",
+    "gatsby-theme-elements": "*",
     "react": "^16.8.6",
     "react-dom": "^16.8.6"
   },
