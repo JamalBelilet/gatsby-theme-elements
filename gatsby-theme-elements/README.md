@@ -17,7 +17,7 @@ To use this theme in your Gatsby sites, follow these instructions:
     ```js
     module.exports = {
       plugins: [
-        'gatsby-theme-jam-example'
+        'gatsby-theme-elements'
       ]
     }
     ```
