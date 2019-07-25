@@ -4,11 +4,19 @@ import { Layout as StyledLayout, Header, Main, Container } from "theme-ui"
 import { graphql, useStaticQuery } from "gatsby"
 
 const Layout = ({ children }) => {
-  const data = useStaticQuery(graphql`
+  const {
+    site: {
+      siteMetadata: {
+        title,
+        // description
+      }
+    }
+  } = useStaticQuery(graphql`
     query {
       site {
         siteMetadata {
           title
+          description
         }
       }
     }
@@ -24,7 +32,7 @@ const Layout = ({ children }) => {
         `}
       />
       <Header>
-        <span>{data.site.siteMetadata.title}</span>
+        <span>{title}</span>
       </Header>
       <Main>
         <Container>{children}</Container>
