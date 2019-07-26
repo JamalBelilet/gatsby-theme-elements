@@ -29,9 +29,12 @@
   "dependencies": {
     "@emotion/core": "^10.0.14",
     "@mdx-js/react": "^1.0.21",
+    "gatsby-image": "^2.2.7",
+    "gatsby-plugin-sharp": "^2.2.9",
     "gatsby-plugin-theme-ui": "^0.2.2",
     "gatsby-source-filesystem": "^2.1.6",
     "gatsby-transformer-remark": "^2.6.9",
+    "gatsby-transformer-sharp": "^2.2.4",
     "theme-ui": "^0.2.2"
   },
   "keywords": [

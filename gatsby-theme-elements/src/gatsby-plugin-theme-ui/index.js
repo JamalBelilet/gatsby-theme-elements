@@ -4,59 +4,96 @@
  * @see https://theme-ui.com/gatsby-plugin/
  */
 export default {
-  colors: {
-    text: "#232129",
-    background: "#fff",
-    primary: "#639",
-  },
+  space: [0, 4, 8, 16, 32],
   fonts: {
-    default:
-      '-apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol"',
+    body: '-apple-system, BlinkMacSystemFont, Segoe UI, Roboto, sans-serif'
   },
   fontSizes: [16, 18, 20, 22, 27, 36],
   lineHeights: {
-    text: "1.45",
-    heading: "1.1",
+    body: 1.45,
+    heading: 1.1
+  },
+  colors: {
+    gray: ['#efefef', '#ddd', '#333', '#111'],
+    background: '#fff',
+    primary: 'rebeccapurple'
   },
   sizes: {
-    container: 650,
+    default: '100%',
+    max: '820px',
+    small: '25px',
   },
   styles: {
     Layout: {
-      backgroundColor: "background",
-      color: "text",
-      fontFamily: "default",
+      color: 'gray.2',
+      fontFamily: 'body',
       fontSize: 1,
-      lineHeight: "text",
+      lineHeight: 'body',
     },
     Header: {
-      backgroundColor: "primary",
-      color: "background",
-      fontWeight: "bold",
-      margin: 0,
-      span: {
-        display: "block",
-        fontSize: 3,
-        margin: "0 auto",
-        maxWidth: "container",
-        padding: 3,
-        width: "90vw",
+      backgroundColor: 'background',
+      color: 'gray.3',
+      margin: '0 auto',
+      padding: '15px 15%',
+      width: 'default',
+      display: 'flex',
+      justifyContent: 'space-between',
+      alignItems: 'center',
+      borderBottom: '1px solid rgba(0,0,0,.0975)',
+      div: {
+        display: 'flex',
+        justifyContent: 'center',
+        alignItems: 'center',
       },
+      nav: {
+        display: 'flex',
+        justifyContent: 'center',
+        alignItems: 'center',
+      },
+      input: {
+        background: '#fafafa',
+        border: 'solid 1px #dbdbdb',
+        textAlign: 'center',
+        padding: '7px',
+        minWidth: '200px'
+      }
     },
     Main: {
-      margin: "0 auto",
-      maxWidth: "container",
-      width: "90vw",
+      margin: '0 auto',
+      width: 'default',
+      backgroundColor: '#FAFAFA',
     },
     Container: {
-      padding: 0,
-      paddingBottom: 3,
-      paddingTop: 3,
+      padding: 3
     },
     h1: {
-      color: "text",
+      color: 'gray.3',
       fontSize: 5,
-      lineHeight: "heading",
+      fontWeight: 'bold',
+      lineHeight: 'heading',
+      margin: 0,
+      marginTop: 3
     },
-  },
+    ul: {
+      borderTop: '1px solid',
+      borderColor: 'gray.0',
+      listStyle: 'none',
+      padding: 0
+    },
+    li: {
+      borderBottom: '1px solid',
+      borderColor: 'gray.0',
+      padding: 0,
+      '&:focus-within, &:hover': {
+        backgroundColor: 'gray.0'
+      }
+    },
+    img: {
+      height: 'small',
+      margin: '0 8px',
+    },
+    p: {
+      margin: '0',
+    }
+  }
 }
