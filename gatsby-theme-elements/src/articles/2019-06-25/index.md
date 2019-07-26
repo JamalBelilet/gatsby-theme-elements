@@ -2,6 +2,7 @@
 date: "2019-06-25"
 title: "Ex fugiat amet amet pariatur commodo elit ad consequat nostrud ipsum aute et qui non."
 tags: ['eiusmod', 'irure']
+image: "./images/index.jpg"
 ---
 
 ### Dolor reprehenderit in cillum elit exercitation.

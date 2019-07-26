@@ -2,6 +2,7 @@
 date: "2019-06-23"
 title: "Quis ad eiusmod qui irure"
 tags: ['eiusmod', 'irure']
+image: "./images/index.jpg"
 ---
 
 ### Enim non anim duis reprehenderit.

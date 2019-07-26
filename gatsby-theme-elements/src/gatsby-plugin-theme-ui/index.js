@@ -21,7 +21,7 @@ export default {
   sizes: {
     default: '100%',
     max: '820px',
-    small: '25px',
+    small: '21px',
   },
   styles: {
     Layout: {
@@ -34,7 +34,7 @@ export default {
       backgroundColor: 'background',
       color: 'gray.3',
       margin: '0 auto',
-      padding: '15px 15%',
+      padding: '20px 15%',
       width: 'default',
       display: 'flex',
       justifyContent: 'space-between',
@@ -64,7 +64,7 @@ export default {
       backgroundColor: '#FAFAFA',
     },
     Container: {
-      padding: 3
+      padding: '45px',
     },
     h1: {
       color: 'gray.3',

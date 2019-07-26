@@ -2,6 +2,7 @@
 date: "2019-06-24"
 title: "Labore sit nisi irure ut excepteur id."
 tags: ['eiusmod', 'irure']
+image: "./images/index.jpg"
 ---
 
 ### Commodo deserunt proident sunt exercitation anim.

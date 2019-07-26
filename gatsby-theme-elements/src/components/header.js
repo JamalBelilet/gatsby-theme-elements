@@ -1,6 +1,6 @@
 import React from 'react'
 import { Header as StyledHeader, Styled } from "theme-ui"
-import { graphql, useStaticQuery } from "gatsby"
+import { graphql, useStaticQuery, Link } from "gatsby"
 import Icon from './icon';
 
 
@@ -31,16 +31,18 @@ const Header = () => {
 
   return (
     <StyledHeader>
+        <Link to="/">
       <div>
-        <Icon name={'instagram'} />
-        <img
-          style={{
-            height: '41px',
-            marginLeft: '5px',
-          }}
-          src={elements}
-        />
+          <Icon name={'instagram'} />
+          <img
+            style={{
+              height: '31px',
+              marginLeft: '3px',
+            }}
+            src={elements}
+          />
       </div>
+        </Link>
       <input type="search" placeholder="Search"/>
       <nav>
         <Icon name={'safari'} />

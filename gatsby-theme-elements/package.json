@@ -35,6 +35,7 @@
     "gatsby-source-filesystem": "^2.1.6",
     "gatsby-transformer-remark": "^2.6.9",
     "gatsby-transformer-sharp": "^2.2.4",
+    "react-timeago": "^4.4.0",
     "theme-ui": "^0.2.2"
   },
   "keywords": [
