@@ -15,10 +15,12 @@ const StyledArticle = ({
       date,
       path,
       tags,
+      read,
       image: {
         publicURL
       }
-    }
+    },
+    tag: selectedTag,
   }) => {
   return (
     <div
@@ -57,10 +59,17 @@ const StyledArticle = ({
           fontSize: '14px',
         }}>{
           tags.map(
-            tag => <span style={{
-              paddingRight: '5px',
-              color: '#003569'
-            }}>{`#${tag}`}</span>
+            tag => {
+              return <Link to={`/tags/${tag}`} style={{
+                color: '#003569',
+                textDecoration: 'none',
+                padding: '0 2px',
+                fontSize: '14px',
+                margin: '0 4px',
+                border: `1px solid ${selectedTag == tag ? '#003ee6' : 'transparent'}`,
+                boxShadow: selectedTag == tag && '5px 6px 0px #0030b3',
+              }}>#{tag}</Link>
+            }
           )
         }</p>
       </div>
@@ -81,8 +90,17 @@ const StyledArticle = ({
         }}
         placeholder="Add a comment..."
       >
-        <div style={{flex: 1}}></div>
-        <a href={`#`} style={{
+        <div style={{ flex: 1 }}>
+          <p style={{
+            margin: 0,
+            marginTop: '8px',
+            color: '#111',
+            lineHeight: 1,
+            fontSize: '12px',
+            fontWeight: '500',
+          }}>{read} min read</p>
+        </div>
+        <a href='#' style={{
           backgroundColor: '#003ee6',
           color: '#fff',
           padding: '2px 8px',

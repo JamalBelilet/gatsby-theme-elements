@@ -3,7 +3,7 @@ import { graphql, useStaticQuery } from "gatsby"
 // import { Icon as StyledIcon } from "theme-ui"
 import { Styled } from 'theme-ui'
 
-const Icon = ({name}) => {
+const Icon = ({name, size=21}) => {
   const {
     allFile: {
       edges: icons
@@ -24,6 +24,7 @@ const Icon = ({name}) => {
   return (
     <Styled.img
       src={publicURL}
+      style={{ width: size, height: size}}
     />
   )
 }

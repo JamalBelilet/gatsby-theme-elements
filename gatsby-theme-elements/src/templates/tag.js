@@ -4,14 +4,11 @@ import Layout from "../components/layout"
 import { useStaticQuery, graphql, Link } from 'gatsby'
 import StyledArticle from "../components/styled-article";
 
-const PageTemplate = ({ pageContext: { tags } }) => {
+const TagPageTemplate = ({ pageContext: { articles: pages, tags, tag: selectedTag } }) => {
   const {
     allFile: {
       edges: images
     },
-    allMarkdownRemark: {
-      edges: pages
-    }
   } = useStaticQuery(graphql`
     query {
       allFile(filter:{sourceInstanceName:{eq:"images"}}) {
@@ -22,24 +19,6 @@ const PageTemplate = ({ pageContext: { tags } }) => {
           }
         }
       },
-      allMarkdownRemark(
-        sort: {order:DESC, fields: [frontmatter___date]}
-      ) {
-        edges {
-          node {
-            excerpt
-            frontmatter {
-              title
-              date
-              tags
-              read
-              image {
-                publicURL
-              }
-            }
-          }
-        }
-      }
     }
   `)
 
@@ -61,12 +40,12 @@ const PageTemplate = ({ pageContext: { tags } }) => {
             marginTop: '15px'
           }}
         >{
-          pages.map(
-            ({ node }) => (
-              <StyledArticle {...node}/>
+            pages.map(
+              ({ node }) => (
+                <StyledArticle {...node} tag={selectedTag} />
+              )
             )
-          )
-        }</div>
+          }</div>
         <div
           style={{
             width: 'calc(35% - 25px)',
@@ -74,48 +53,12 @@ const PageTemplate = ({ pageContext: { tags } }) => {
             marginTop: '15px',
           }}
         >
-          {/* <div style={{
-            display: 'flex',
-            justifyContent: 'flex-start',
-            alignItems: 'center',
-          }}>
-            <img style={{
-              boxSizing: 'border-box',
-              border: '1px solid #003ee6',
-              padding: '2px',
-              backgroundColor: '#fff',
-              width: '58px',
-              height: '58px',
-              borderRadius: '58px',
-              objectFit: 'cover',
-            }} src={publicURL} alt=""/>
-            <div style={{
-              display: 'flex',
-              flexFlow: 'column nowrap',
-              justifyContent: 'center',
-              alignItems: 'flex-start',
-              marginLeft: '10px',
-            }}>
-              <p style={{
-                margin: '0',
-                color: '#262626',
-                fontWeight: '600',
-                fontSize: '14px',
-              }}>JamalBelilet</p>
-              <p style={{
-                margin: '0',
-                color: '#999',
-                fontSize: '12px',
-              }}>Djamaleddine Belilet</p>
-            </div>
-          </div> */}
           <div style={{
             borderRadius: '3px',
             display: 'flex',
             flexFlow: 'row wrap',
-            alignItems:'center',
+            alignItems: 'center',
             justifyContent: 'center',
-            // border: '1px solid #e6e6e6',
             border: '1px solid #003ee6',
             boxShadow: '5px 6px 0px #0030b3',
             backgroundColor: 'white',
@@ -127,15 +70,18 @@ const PageTemplate = ({ pageContext: { tags } }) => {
           }}>
             {tags
               .map(
-                tag =>
-                  <Link to={`/tags/${tag}`} style={{
+                tag => {
+
+                  return <Link to={`/tags/${tag}`} style={{
                     color: '#003569',
                     textDecoration: 'none',
                     padding: '0 2px',
                     fontSize: '14px',
                     margin: '0 4px',
-                    border: `1px solid transparent`,
+                    border: `1px solid ${selectedTag == tag ? '#003ee6': 'transparent'}`,
+                    boxShadow: selectedTag == tag && '5px 6px 0px #0030b3',
                   }}>#{tag}</Link>
+                }
               )}
           </div>
           <div style={{
@@ -179,15 +125,15 @@ const PageTemplate = ({ pageContext: { tags } }) => {
                   textDecoration: 'none',
                   height: 'calc(calc(100% - 56px) / 3)',
                   width: '100%',
-                  backgroundColor: index !== 1 ? '#eee': '#fff',
-                  borderRadius: index === 2 ? '0 0 3px 3px': '0px',
+                  backgroundColor: index !== 1 ? '#eee' : '#fff',
+                  borderRadius: index === 2 ? '0 0 3px 3px' : '0px',
                   display: 'flex',
                   justifyContent: 'center',
                   alignItems: 'center',
                   padding: '0 16px',
                   boxSizing: 'border-box',
                 }}>
-                  <img src={image} alt={image}/>
+                  <img src={image} alt={image} />
                   <p style={{
                     margin: '0 0 0 8px',
                     color: '#003569',
@@ -228,4 +174,4 @@ const PageTemplate = ({ pageContext: { tags } }) => {
   )
 }
 
-export default PageTemplate
+export default TagPageTemplate

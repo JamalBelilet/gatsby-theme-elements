@@ -1,11 +1,11 @@
 ---
 date: "2019-06-24"
 title: "Labore sit nisi irure ut excepteur id."
-tags: ['eiusmod', 'irure']
+tags: ['vue', 'react', 'aws', 'git', 'docker', 'rails', 'linux']
 image: "./images/index.jpg"
----
+read: 1
 
-### Commodo deserunt proident sunt exercitation anim.
+---
 
 Fugiat elit do commodo nulla nisi enim sunt sunt minim ea esse tempor ut. Qui ipsum laboris consequat cupidatat do. Sit ex culpa nostrud tempor id aliquip cillum magna duis officia. Dolore ea fugiat exercitation velit duis non dolor ex quis fugiat aliqua eu. Dolore sit deserunt nulla in ea eiusmod. Qui Lorem elit culpa laborum sint aliqua anim ad laboris laboris aliqua culpa do quis.
 
