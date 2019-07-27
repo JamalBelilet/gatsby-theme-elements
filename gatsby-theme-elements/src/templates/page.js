@@ -1,22 +1,27 @@
 import React from "react"
 // import { Styled } from "theme-ui"
 import Layout from "../components/layout"
-import { useStaticQuery, graphql } from 'gatsby'
+import { useStaticQuery, graphql, Link } from 'gatsby'
 import StyledArticle from "../components/styled-article";
 
 const PageTemplate = ({ pageContext }) => {
   const {
-    imageOne: {
-      publicURL
+    allFile: {
+      edges: images
     },
     allMarkdownRemark: {
       edges: pages
     }
   } = useStaticQuery(graphql`
     query {
-      imageOne: file(relativePath: {eq: "jamal.jpg"}) {
-        publicURL
-      }
+      allFile(filter:{sourceInstanceName:{eq:"images"}}) {
+        edges {
+          node {
+            name
+            publicURL
+          }
+        }
+      },
       allMarkdownRemark(
         sort: {order:DESC, fields: [frontmatter___date]}
       ) {
@@ -36,6 +41,11 @@ const PageTemplate = ({ pageContext }) => {
       }
     }
   `)
+
+
+  const { publicURL: flutter } = images.filter(({ node }) => node.name === 'flutter')[0].node
+  const { publicURL: gatsby } = images.filter(({ node }) => node.name === 'gatsby')[0].node
+  const { publicURL: react } = images.filter(({ node }) => node.name === 'react')[0].node
 
   return (
     <Layout>
@@ -66,21 +76,21 @@ const PageTemplate = ({ pageContext }) => {
             marginTop: '15px',
           }}
         >
-          <div style={{
+          {/* <div style={{
             display: 'flex',
             justifyContent: 'flex-start',
             alignItems: 'center',
           }}>
             <img style={{
               boxSizing: 'border-box',
-              border: '1px solid #efefef',
+              border: '1px solid #003ee6',
               padding: '2px',
               backgroundColor: '#fff',
               width: '58px',
               height: '58px',
               borderRadius: '58px',
               objectFit: 'cover',
-            }} src={publicURL}/>
+            }} src={publicURL} alt=""/>
             <div style={{
               display: 'flex',
               flexFlow: 'column nowrap',
@@ -100,39 +110,118 @@ const PageTemplate = ({ pageContext }) => {
                 fontSize: '12px',
               }}>Djamaleddine Belilet</p>
             </div>
-          </div>
+          </div> */}
           <div style={{
             borderRadius: '3px',
-            border: '1px solid #e6e6e6',
+            display: 'flex',
+            flexFlow: 'row wrap',
+            alignItems:'center',
+            justifyContent: 'center',
+            // border: '1px solid #e6e6e6',
+            border: '1px solid #003ee6',
+            boxShadow: '5px 6px 0px #0030b3',
             backgroundColor: 'white',
             marginBottom: '54px',
             height: '31vh',
-            margin: '15px 0',
-          }}/>
+            margin: '0 0 15px 0',
+            padding: '16px',
+            boxSizing: 'border-box',
+          }}>
+            {['#javascript', '#webdev', '#tutorial', '#node', '#career', '#css',
+              '#vue', '#react', '#aws', '#git', '#docker', '#rails', '#linux',
+              '#go', 'security', '#help', '#html', '#testing', '#git', '#opensource']
+              .map(
+                tag =>
+                  <Link to={`#`} style={{
+                    color: '#003569',
+                    textDecoration: 'none',
+                    padding: '0 8px 0 0',
+                    fontSize: '14px',
+                  }}>{tag}</Link>
+              )}
+          </div>
           <div style={{
             borderRadius: '3px',
-            border: '1px solid #e6e6e6',
+            // border: '1px solid #e6e6e6',
+
+            border: '1px solid #003ee6',
+            boxShadow: '5px 6px 0px #0030b3',
+
             backgroundColor: 'white',
             marginBottom: '54px',
-            height: '27vh',
+            height: '35vh',
             margin: '15px 0',
-          }}/>
+          }}>
+            <p style={{
+              margin: 0,
+              padding: '16px',
+              color: '#003569',
+              textDecoration: 'none',
+              fontSize: '14px',
+              textTransform: 'uppercase',
+              boxSizing: 'border-box',
+              lineHeight: '24px',
+            }}>#Available_for_Hire</p>
+            {
+              [
+                {
+                  title: 'Develop react or react native with backend nodejs laravel',
+                  image: react,
+                },
+                {
+                  title: 'Create a gatsby website or store connected to a headless CMS',
+                  image: gatsby,
+                },
+                {
+                  title: 'Develop ios and android app using flutter with back end',
+                  image: flutter
+                },
+              ].map(({ title, image }, index) => (
+                <Link style={{
+                  textDecoration: 'none',
+                  height: 'calc(calc(100% - 56px) / 3)',
+                  width: '100%',
+                  backgroundColor: index !== 1 ? '#eee': '#fff',
+                  borderRadius: index === 2 ? '0 0 3px 3px': '0px',
+                  display: 'flex',
+                  justifyContent: 'center',
+                  alignItems: 'center',
+                  padding: '0 16px',
+                  boxSizing: 'border-box',
+                }}>
+                  <img src={image} alt={image}/>
+                  <p style={{
+                    margin: '0 0 0 8px',
+                    color: '#003569',
+                    fontSize: '11px',
+                    fontWeight: '400',
+                    lineHeight: 1.4,
+                    textTransform: 'capitalize',
+                    paddingRight: '3px',
+
+                  }}>{title}</p>
+                </Link>
+              ))
+            }
+          </div>
           <div style={{
             display: 'flex',
             flexFlow: 'row wrap',
           }}>
             {
               [
-                'About', 'Support', 'Press', 'API', 'Jobs', 'Privacy', 'Terms', 'Directory', 'Profiles', 'Hashtags', 'Language',
-              ].map(link => <div
+                'About', 'Contact', 'Github', 'Privacy', 'Terms', 'Language',
+              ].map(link => <Link
+                to="#"
                 style={{
                   color: '#c7c7c7',
                   fontSize: '11px',
                   fontWeight: '400',
                   lineHeight: 1.8,
                   textTransform: 'capitalize',
-                  paddingRight: '3px'
-                }}>{link} .</div>)
+                  paddingRight: '3px',
+                  textDecoration: 'none',
+                }}>{link} .</Link>)
             }
           </div>
         </div>

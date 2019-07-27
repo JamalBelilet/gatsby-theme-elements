@@ -20,7 +20,7 @@ const Icon = ({name}) => {
       }
     }
   `)
-  const { publicURL } = icons.filter(({ node }) => node.name == name)[0].node
+  const { publicURL } = icons.filter(({ node }) => node.name === name)[0].node
   return (
     <Styled.img
       src={publicURL}

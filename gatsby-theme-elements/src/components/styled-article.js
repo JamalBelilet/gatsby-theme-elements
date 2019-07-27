@@ -1,6 +1,5 @@
 import React from 'react'
 import { Link } from 'gatsby';
-import Icon from './icon';
 
 const slugify = str => {
   const slug = str
@@ -25,7 +24,11 @@ const StyledArticle = ({
     <div
       style={{
         borderRadius: '3px',
-        border: '1px solid #e6e6e6',
+        // border: '1px solid #e6e6e6',
+
+        border: '1px solid #003ee6',
+        boxShadow: '5px 6px 0px #0030b3',
+
         backgroundColor: 'white',
         marginBottom: '54px'
       }}
@@ -37,13 +40,13 @@ const StyledArticle = ({
         }}>{title}</Link></p>
       </div>
 
-      <div style={{ padding: '0' }}>
+      {/* <div style={{ padding: '0' }}>
         <img style={{
           width: '100%',
-          height: '650px',
+          height: '350px',
           objectFit: 'cover',
-        }} src={publicURL} />
-      </div>
+        }} src={publicURL} alt={publicURL} />
+      </div> */}
       <div style={{ padding: '0 16px' }}>
         <p style={{
           fontSize: '14px',
@@ -71,17 +74,23 @@ const StyledArticle = ({
           width: '100%',
           border: '0',
           padding: '15px 16px',
-          borderTop: '1px solid #efefef',
+          borderTop: '1px solid #003ee6',
           boxSizing: 'border-box',
           fontSize: '14px',
           display: 'flex',
         }}
         placeholder="Add a comment..."
       >
-        <Icon name={'like'} />
-        <Icon name={'upload'} />
         <div style={{flex: 1}}></div>
-        <Icon name={'bookmark'} />
+        <a href={`#`} style={{
+          backgroundColor: '#003ee6',
+          color: '#fff',
+          padding: '2px 8px',
+          borderRadius: '3px',
+          fontSize: '14px',
+          textTransform: 'uppercase',
+          textDecoration: 'none',
+        }}>save</a>
       </div>
     </div>
   )
