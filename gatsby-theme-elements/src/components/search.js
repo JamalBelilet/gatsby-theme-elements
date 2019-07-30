@@ -85,7 +85,7 @@ export default function Search({ indices, collapse, hitsAsGrid }) {
 
 
 const PoweredBy = () => (
-  <div css="font-size: 0.6em; text-align: end; padding: 16px 0 8px 0;">
+  <div css="font-size: 0.6em; text-align: end; padding: 0 0 8px 0;">
     Powered by{` `}
     <a style={{padding: '0 4px'}} href="https://algolia.com">
       <Algolia size="1em" /> Algolia
@@ -109,6 +109,7 @@ const slugify = (str, basePath) => {
 const ArticleHit = clickHandler => ({ hit }) => (
   <div style={{
     display: 'block',
+    marginBottom: '16px'
   }}>
     <Link style={{
       textDecoration: 'none',
