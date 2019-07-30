@@ -10,6 +10,9 @@ import {
 } from "react-instantsearch-dom"
 import algoliasearch from "algoliasearch/lite"
 import { Algolia } from "styled-icons/fa-brands";
+import styled, { css } from "styled-components"
+import { Container } from "theme-ui";
+
 
 const Results = connectStateResults(
   ({ searchState: state, searchResults: res, children }) =>
@@ -50,7 +53,7 @@ export default function Search({ indices, collapse, hitsAsGrid }) {
       {
         query.length > 0 && focus &&
         <div style={{
-          backgroundColor: 'green',
+          backgroundColor: 'white',
           display: 'block',
           position: 'absolute',
           right: 0,
@@ -58,17 +61,18 @@ export default function Search({ indices, collapse, hitsAsGrid }) {
           overflow: 'scroll',
           zIndex: '2',
           top: 'calc(100% + 0.5em)',
+
+          border: '1px solid #003ee6',
+          boxShadow: '5px 6px 0px #0030b3',
+
         }}>
           {indices.map(({ name, title, hitComp }) => (
             <Index key={name} indexName={name}>
-              <div style={{
-                backgroundColor: 'blue',
-                display: 'block',
-              }}>
+              <Container style={{ padding: '8px', fontSize: '14px', minWidth: '214px'}}>
                 <Results >
-                  <Hits hitComponent={ArticleHit[hitComp](() => setFocus(false))} />
+                  <Hits hitComponent={ArticleHit(() => setFocus(false))} />
                 </Results>
-              </div>
+              </Container>
             </Index>
           ))}
           <PoweredBy />
@@ -81,17 +85,17 @@ export default function Search({ indices, collapse, hitsAsGrid }) {
 
 
 const PoweredBy = () => (
-  <span css="font-size: 0.6em; text-align: end; padding: 0;">
+  <div css="font-size: 0.6em; text-align: end; padding: 16px 0 8px 0;">
     Powered by{` `}
-    <a href="https://algolia.com">
+    <a style={{padding: '0 4px'}} href="https://algolia.com">
       <Algolia size="1em" /> Algolia
     </a>
-  </span>
+  </div>
 )
+export const Root = styled.div`
+  position: relative;
+`
 
-const Root = ({children}) => (
-  <div>{children}</div>
-)
 
 
 const slugify = (str, basePath) => {
@@ -103,13 +107,29 @@ const slugify = (str, basePath) => {
 }
 
 const ArticleHit = clickHandler => ({ hit }) => (
-  <div>
-    <Link to={`/` + slugify(hit.title, '/')} onClick={clickHandler}>
-      <h4>
+  <div style={{
+    display: 'block',
+  }}>
+    <Link style={{
+      textDecoration: 'none',
+    }} to={`/` + slugify(hit.title, '/')} onClick={clickHandler}>
+      <p style={{
+        color: '#111',
+        fontSize: '14px',
+        padding: 0,
+        margin: 0,
+      }}>
         <Highlight attribute="title" hit={hit} tagName="mark" />
-      </h4>
+      </p>
     </Link>
-    <Highlight attribute="date" hit={hit} tagName="mark" />
+    <p style={{
+      color: '#333',
+      fontSize: '10px',
+      padding: 0,
+      margin: 0,
+    }}>
+      <Highlight attribute="date" hit={hit} tagName="mark" />
+    </p>
   </div>
 )
 

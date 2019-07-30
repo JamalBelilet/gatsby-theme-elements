@@ -74,6 +74,11 @@ export default {
     },
     Container: {
       padding: '45px',
+      ul: {
+        listStyle: 'none',
+        padding: 0,
+        margin: 0,
+      }
     },
     h1: {
       color: 'gray.3',
