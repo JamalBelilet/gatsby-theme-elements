@@ -3,7 +3,6 @@ date: "2019-06-25"
 title: "Ex fugiat amet amet pariatur commodo elit ad consequat nostrud ipsum aute et qui non."
 tags: ['go', 'security', 'help', 'html', 'testing', 'git', 'opensource']
 image: "./images/index.jpg"
-read: 4
 ---
 
 Excepteur laboris deserunt ea deserunt. Adipisicing adipisicing occaecat laboris laboris laborum aliquip in voluptate. Ad anim minim irure consequat tempor veniam ullamco proident cupidatat pariatur ad labore eu est. Ipsum cillum non quis proident elit ut Lorem mollit. Esse non consequat eu adipisicing in exercitation aliqua. Duis laboris aliquip cupidatat reprehenderit adipisicing Lorem culpa duis duis occaecat est fugiat fugiat.

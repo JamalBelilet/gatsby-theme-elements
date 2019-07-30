@@ -8,14 +8,22 @@ const slugify = str => {
     .replace(/(^-|-$)+/g, '')
   return `/${'/'}/${slug}`.replace(/\/\/+/g, '/');
 }
+const readingTime = (words) => {
+  const wordsPerMinute = 200;
+  const minutes = words / wordsPerMinute;
+  const readTime = Math.ceil(minutes);
+  return `${readTime} min read`;
+}
 const StyledArticle = ({
+    wordCount: {
+      words
+    },
     excerpt,
     frontmatter: {
       title,
       date,
       path,
       tags,
-      read,
       image: {
         publicURL
       }
@@ -98,7 +106,7 @@ const StyledArticle = ({
             lineHeight: 1,
             fontSize: '12px',
             fontWeight: '500',
-          }}>{read} min read</p>
+          }}>{readingTime(words)}</p>
         </div>
         <a href='#' style={{
           backgroundColor: '#003ee6',

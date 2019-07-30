@@ -28,13 +28,16 @@ exports.createPages = async ({ actions, graphql, reporter }, options) => {
       ) {
         edges {
           node {
+            html
+            wordCount {
+              words
+            }
             id
             excerpt
             frontmatter {
               title
               date
               tags
-              read
               image {
                 publicURL
               }

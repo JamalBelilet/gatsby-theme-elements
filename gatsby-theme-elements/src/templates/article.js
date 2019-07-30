@@ -3,15 +3,24 @@ import Layout from "../components/layout"
 import { graphql, Link } from 'gatsby';
 import Icon from '../components/icon';
 
+const readingTime = (words) => {
+  const wordsPerMinute = 200;
+  const minutes = words / wordsPerMinute;
+  const readTime = Math.ceil(minutes);
+  return `${readTime} min read`;
+}
+
 export const query = graphql`
   query ($articleId: String!) {
     markdownRemark(id: {eq:$articleId}) {
       html
+      wordCount {
+        words
+      }
       frontmatter {
         title
         tags
         date
-        read
       }
     }
   }
@@ -19,7 +28,7 @@ export const query = graphql`
 
 const Article = ({
   data: {
-    markdownRemark: { html, frontmatter: { title, tags, date, read } }
+    markdownRemark: { html, wordCount: { words }, frontmatter: { title, tags, date } }
   },
   pageContext: {
     prev,
@@ -118,7 +127,6 @@ const Article = ({
                 fontSize: '14px',
                 display: 'flex',
               }}
-              placeholder="Add a comment..."
             >
               <div style={{ flex: 1 }}>
                 <p style={{
@@ -128,7 +136,7 @@ const Article = ({
                   lineHeight: 1,
                   fontSize: '12px',
                   fontWeight: '500',
-                }}>{read} min read</p>
+                }}>{readingTime(words)}</p>
               </div>
               <a href='#' style={{
                 backgroundColor: '#003ee6',
@@ -186,7 +194,7 @@ const Article = ({
                         lineHeight: 1,
                         fontSize: '10px',
                       }}>
-                        {prev.node.frontmatter.read} min read
+                        {readingTime(prev.node.wordCount.words)}
                       </p>
                     </div>
                   </Link>
@@ -218,7 +226,7 @@ const Article = ({
                         lineHeight: 1,
                         fontSize: '10px',
                       }}>
-                        {next.node.frontmatter.read} min read
+                        {readingTime(next.node.wordCount.words)}
                       </p>
                     </div>
                     <div style={{ width: '15px' }}></div>

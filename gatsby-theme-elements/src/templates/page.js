@@ -27,12 +27,15 @@ const PageTemplate = ({ pageContext: { tags } }) => {
       ) {
         edges {
           node {
+            rawMarkdownBody
+            wordCount {
+              words
+            }
             excerpt
             frontmatter {
               title
               date
               tags
-              read
               image {
                 publicURL
               }
