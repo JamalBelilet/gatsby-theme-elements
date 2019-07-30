@@ -40,7 +40,7 @@ export default {
       justifyContent: 'space-between',
       alignItems: 'center',
       // borderBottom: '1px solid rgba(0,0,0,.0975)',
-      border: '1px solid #003ee6',
+      borderBottom: '1px solid #003ee6',
       boxShadow: '5px 6px 0px #0030b3',
 
       div: {
