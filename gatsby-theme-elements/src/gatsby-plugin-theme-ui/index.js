@@ -60,6 +60,7 @@ export default {
         color: '#003ee6',
         textAlign: 'center',
         padding: '7px',
+        fontSize: '12px',
         minWidth: '200px',
         '::placeholder': {
           color: '#003ee6',
