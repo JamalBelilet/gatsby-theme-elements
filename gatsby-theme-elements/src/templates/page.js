@@ -4,13 +4,16 @@ import Layout from "../components/layout"
 import { useStaticQuery, graphql, Link } from 'gatsby'
 import StyledArticle from "../components/styled-article";
 
-const PageTemplate = ({ pageContext: { tags } }) => {
+const PageTemplate = ({
+  pageContext: {
+    articles: pages,
+    tags,
+    tag: selectedTag,
+  },
+}) => {
   const {
     allFile: {
       edges: images
-    },
-    allMarkdownRemark: {
-      edges: pages
     },
     allStory: {
       edges: stories
@@ -25,27 +28,27 @@ const PageTemplate = ({ pageContext: { tags } }) => {
           }
         }
       },
-      allMarkdownRemark(
-        sort: {order:DESC, fields: [frontmatter___date]}
-      ) {
-        edges {
-          node {
-            rawMarkdownBody
-            wordCount {
-              words
-            }
-            excerpt
-            frontmatter {
-              title
-              date
-              tags
-              image {
-                publicURL
-              }
-            }
-          }
-        }
-      }
+      # allMarkdownRemark(
+      #   sort: {order:DESC, fields: [frontmatter___date]}
+      # ) {
+      #   edges {
+      #     node {
+      #       rawMarkdownBody
+      #       wordCount {
+      #         words
+      #       }
+      #       excerpt
+      #       frontmatter {
+      #         title
+      #         date
+      #         tags
+      #         image {
+      #           publicURL
+      #         }
+      #       }
+      #     }
+      #   }
+      # }
       allStory {
         edges {
           node {
@@ -76,7 +79,7 @@ const PageTemplate = ({ pageContext: { tags } }) => {
         >{
           pages.map(
             ({ node }) => (
-              <StyledArticle {...node}/>
+              <StyledArticle {...node} tag={selectedTag}/>
             )
           )
         }</div>
@@ -200,7 +203,8 @@ const PageTemplate = ({ pageContext: { tags } }) => {
                     padding: '0 2px',
                     fontSize: '14px',
                     margin: '0 4px',
-                    border: `1px solid transparent`,
+                    border: `1px solid ${selectedTag == tag ? '#003ee6' : 'transparent'}`,
+                    boxShadow: selectedTag == tag && '5px 6px 0px #0030b3',
                   }}>#{tag}</Link>
               )}
           </div>

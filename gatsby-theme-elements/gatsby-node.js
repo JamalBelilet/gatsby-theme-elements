@@ -86,9 +86,9 @@ exports.createPages = async ({ actions, graphql, reporter }, options) => {
     path: basePath,
     component: require.resolve("./src/templates/page.js"),
     context: {
-      heading: "",
-      content: "",
+      storiesTitle: "#top_stories",
       tags: tags.sort(),
+      articles,
     },
   })
 
@@ -117,8 +117,9 @@ exports.createPages = async ({ actions, graphql, reporter }, options) => {
 
     actions.createPage({
       path: `/tags/${tag}`,
-      component: require.resolve('./src/templates/tag.js'),
+      component: require.resolve('./src/templates/page.js'),
       context: {
+        storiesTitle: "#top_stories",
         articles,
         tag,
         tags
