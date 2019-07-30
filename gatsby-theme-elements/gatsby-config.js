@@ -12,6 +12,19 @@ module.exports = {
     {
       resolve: "gatsby-source-filesystem",
       options: {
+        name: "stories",
+        path: `${__dirname}/src/stories`
+      }
+    },
+    {
+      resolve: 'gatsby-transformer-yaml',
+      options: {
+        typeName: 'Story'
+      }
+    },
+    {
+      resolve: "gatsby-source-filesystem",
+      options: {
         name: "articles",
         path: `${__dirname}/src/articles`
       }

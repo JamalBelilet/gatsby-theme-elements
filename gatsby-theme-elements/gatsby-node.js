@@ -8,6 +8,18 @@ exports.onPreBootstrap = ({ reporter }, options) => {
   }
 }
 
+// todo: create stories directory
+
+exports.sourceNodes = ({ actions }) => {
+  actions.createTypes(`
+    type Story implements Node @dontInfer {
+      id: ID!
+      caption: String!
+      image: String!
+    }
+  `)
+}
+
 const slugify = (str, basePath) => {
   const slug = str
     .toLowerCase()

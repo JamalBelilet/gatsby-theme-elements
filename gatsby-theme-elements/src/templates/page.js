@@ -11,6 +11,9 @@ const PageTemplate = ({ pageContext: { tags } }) => {
     },
     allMarkdownRemark: {
       edges: pages
+    },
+    allStory: {
+      edges: stories
     }
   } = useStaticQuery(graphql`
     query {
@@ -43,13 +46,20 @@ const PageTemplate = ({ pageContext: { tags } }) => {
           }
         }
       }
+      allStory {
+        edges {
+          node {
+            caption
+            id
+            image
+          }
+        }
+      }
     }
   `)
 
 
-  const { publicURL: flutter } = images.filter(({ node }) => node.name === 'flutter')[0].node
-  const { publicURL: gatsby } = images.filter(({ node }) => node.name === 'gatsby')[0].node
-  const { publicURL: react } = images.filter(({ node }) => node.name === 'react')[0].node
+  const getImageUrl = (name) => (images.filter(({ node }) => node.name === name)[0].node).publicURL
 
   return (
     <Layout>
@@ -114,17 +124,70 @@ const PageTemplate = ({ pageContext: { tags } }) => {
           </div> */}
           <div style={{
             borderRadius: '3px',
+            // border: '1px solid #e6e6e6',
+
+            border: '1px solid #003ee6',
+            boxShadow: '5px 6px 0px #0030b3',
+
+            backgroundColor: 'white',
+            marginBottom: '54px',
+            height: '40vh',
+            margin: '0 0 15px 0',
+          }}>
+            <p style={{
+              margin: 0,
+              padding: '8px 16px',
+              color: '#003569',
+              textDecoration: 'none',
+              fontSize: '14px',
+              textTransform: 'uppercase',
+              boxSizing: 'border-box',
+              lineHeight: '24px',
+            }}>#hot_stories</p>
+            {
+              stories.map(({ node: { id, caption, image } }, index) => (
+                <Link key={id} style={{
+                  textDecoration: 'none',
+                  height: `calc(calc(100% - 46px) / ${stories.length })`,
+                  width: '100%',
+                  backgroundColor: index % 2 == 0 ? '#eee' : '#fff',
+                  borderRadius: index === (stories.length - 1) ? '0 0 3px 3px' : '0px',
+                  display: 'flex',
+                  justifyContent: 'flex-start',
+                  alignItems: 'center',
+                  padding: '0 16px',
+                  boxSizing: 'border-box',
+                }}>
+                  <img style={{
+                    border: '1px solid #003ee6',
+                    boxShadow: '5px 6px 0px #0030b3',
+                  }} src={getImageUrl(image)} alt={image} />
+                  <p style={{
+                    margin: '0 0 0 16px',
+                    color: '#003569',
+                    fontSize: '11px',
+                    fontWeight: '400',
+                    lineHeight: 1.4,
+                    textTransform: 'capitalize',
+                    paddingRight: '3px',
+
+                  }}>{caption}</p>
+                </Link>
+              ))
+            }
+          </div>
+          <div style={{
+            borderRadius: '3px',
             display: 'flex',
             flexFlow: 'row wrap',
             alignItems:'center',
+            margin: '15px 0',
             justifyContent: 'center',
             // border: '1px solid #e6e6e6',
             border: '1px solid #003ee6',
             boxShadow: '5px 6px 0px #0030b3',
             backgroundColor: 'white',
-            marginBottom: '54px',
-            height: '31vh',
-            margin: '0 0 15px 0',
+            height: '28vh',
             padding: '16px',
             boxSizing: 'border-box',
           }}>
@@ -141,73 +204,11 @@ const PageTemplate = ({ pageContext: { tags } }) => {
                   }}>#{tag}</Link>
               )}
           </div>
-          <div style={{
-            borderRadius: '3px',
-            // border: '1px solid #e6e6e6',
 
-            border: '1px solid #003ee6',
-            boxShadow: '5px 6px 0px #0030b3',
-
-            backgroundColor: 'white',
-            marginBottom: '54px',
-            height: '35vh',
-            margin: '15px 0',
-          }}>
-            <p style={{
-              margin: 0,
-              padding: '16px',
-              color: '#003569',
-              textDecoration: 'none',
-              fontSize: '14px',
-              textTransform: 'uppercase',
-              boxSizing: 'border-box',
-              lineHeight: '24px',
-            }}>#Available_for_Hire</p>
-            {
-              [
-                {
-                  title: 'Develop react or react native with backend nodejs laravel',
-                  image: react,
-                },
-                {
-                  title: 'Create a gatsby website or store connected to a headless CMS',
-                  image: gatsby,
-                },
-                {
-                  title: 'Develop ios and android app using flutter with back end',
-                  image: flutter
-                },
-              ].map(({ title, image }, index) => (
-                <Link style={{
-                  textDecoration: 'none',
-                  height: 'calc(calc(100% - 56px) / 3)',
-                  width: '100%',
-                  backgroundColor: index !== 1 ? '#eee': '#fff',
-                  borderRadius: index === 2 ? '0 0 3px 3px': '0px',
-                  display: 'flex',
-                  justifyContent: 'center',
-                  alignItems: 'center',
-                  padding: '0 16px',
-                  boxSizing: 'border-box',
-                }}>
-                  <img src={image} alt={image}/>
-                  <p style={{
-                    margin: '0 0 0 8px',
-                    color: '#003569',
-                    fontSize: '11px',
-                    fontWeight: '400',
-                    lineHeight: 1.4,
-                    textTransform: 'capitalize',
-                    paddingRight: '3px',
-
-                  }}>{title}</p>
-                </Link>
-              ))
-            }
-          </div>
           <div style={{
             display: 'flex',
             flexFlow: 'row wrap',
+            marginTop: '16px',
           }}>
             {
               [

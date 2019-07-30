@@ -39,6 +39,7 @@
     "gatsby-source-filesystem": "^2.1.6",
     "gatsby-transformer-remark": "^2.6.9",
     "gatsby-transformer-sharp": "^2.2.4",
+    "gatsby-transformer-yaml": "^2.2.4",
     "react-instantsearch-dom": "^5.7.0",
     "react-timeago": "^4.4.0",
     "styled-components": "^4.3.2",
