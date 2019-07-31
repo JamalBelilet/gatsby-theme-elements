@@ -61,10 +61,11 @@ const Article = ({
             }}
           >
             <div style={{ padding: '0 16px' }}>
-              <p style={{
+              <h2 style={{
                 margin: 0,
                 color: '#111',
-              }}>{title}</p>
+                fontWeight: '400'
+              }}>{title}</h2>
             </div>
 
             <div style={{ padding: '0 16px', fontSize: '14px' }}

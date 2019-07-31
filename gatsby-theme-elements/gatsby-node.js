@@ -1,14 +1,17 @@
 const fs = require('fs');
 exports.onPreBootstrap = ({ reporter }, options) => {
-  const contentPath = options.contentPath || 'articles';
+  const articlesPath = options.articlesPath || 'articles';
+  const storiesPath = options.storiesPath || 'stories';
 
-  if (!fs.existsSync(contentPath)) {
-    reporter.info(`creating the ${contentPath} directory`);
-    fs.mkdirSync(contentPath);
+  if (!fs.existsSync(articlesPath)) {
+    reporter.info(`creating the ${articlesPath} directory`);
+    fs.mkdirSync(articlesPath);
+  }
+  if (!fs.existsSync(storiesPath)) {
+    reporter.info(`creating the ${storiesPath} directory`);
+    fs.mkdirSync(storiesPath);
   }
 }
-
-// todo: create stories directory
 
 exports.sourceNodes = ({ actions }) => {
   actions.createTypes(`
