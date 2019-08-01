@@ -5,5 +5,5 @@
  */
 
 module.exports = {
-  plugins: ["gatsby-theme-elements"],
+  plugins: ["@jamalbelilet/gatsby-theme-elements"],
 }
