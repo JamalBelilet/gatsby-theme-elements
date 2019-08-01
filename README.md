@@ -2,7 +2,7 @@
 
 This is a Gatsby theme built for [Theme Jam](https://themejam.gatsbyjs.org).
 
-See the [live demo](https://gatsby-theme-elements.netlify.com)
+See the [live demo](https://gatsby-theme-element-jm.netlify.com/)
 
 ## Installation
 
