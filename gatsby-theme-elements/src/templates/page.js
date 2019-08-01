@@ -74,7 +74,7 @@ const PageTemplate = ({
         <div
           style={{
             width: '65%',
-            marginTop: '15px'
+            marginTop: '15px',
           }}
         >{
           pages.map(
@@ -136,6 +136,7 @@ const PageTemplate = ({
             marginBottom: '54px',
             height: '40vh',
             margin: '0 0 15px 0',
+            overflow: 'scroll',
           }}>
             <p style={{
               margin: 0,
@@ -160,6 +161,7 @@ const PageTemplate = ({
                   alignItems: 'center',
                   padding: '0 16px',
                   boxSizing: 'border-box',
+                  minHeight: '10vh',
                 }}>
                   <img style={{
                     border: '1px solid #003ee6',
